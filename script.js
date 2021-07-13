@@ -117,7 +117,8 @@ for(var i = 0; i < 4; i++){
     TweenMax.to(['#text' + e.target.radioId], 1, {
       alpha:1
     })  
-     
+    document.getElementById("placeholder").innerHTML = document.getElementById('text'+e.target.radioId).textContent;
+    document.getElementById("windowName").innerHTML = `Alex Jiang: ${document.getElementById('text'+e.target.radioId).textContent}`;
   }//end loop
     
  
@@ -125,3 +126,74 @@ for(var i = 0; i < 4; i++){
 
 
 select('#radio0').onclick({target:select('#radio0')});
+
+function changeDiv() {
+  document.getElementById("placeholder").innerHTML = "whatever";
+}
+
+$(document).click(function(event) {
+  var text = ""
+  if (event.target.id == "exit") {
+    text = "Easter egg???"
+    document.getElementById("exitPressCount").innerHTML = `${Number(document.getElementById("exitPressCount").innerHTML)+1}`
+    if (Number(document.getElementById("exitPressCount").innerHTML) >= 3) {
+      text = "YOU FOUND ME"
+      document.getElementById("easterEggBSOD").style.display = "initial";
+    }
+  } else if (event.target.id == "minimize") {
+    text = "Disappearing..."
+    document.getElementById("cover").style.animationName = "fade"
+    document.getElementById("cover").style.animationDuration = "0.25s"
+    document.getElementById("cover").style.animationTimingFunction = "ease-in-out"
+    document.getElementById("cover").style.animationFillMode = "backwards" 
+    document.getElementById("cover").style.animationDirection = "normal"
+  } else if (event.target.id == "cover") {
+    text = "Clicking cover..."
+    document.getElementById("cover").style.animationName = "fadeOut"
+    document.getElementById("cover").style.animationDuration = "0.25s"
+    document.getElementById("cover").style.animationTimingFunction = "ease-in-out"
+    document.getElementById("cover").style.animationFillMode = "forwards" 
+    document.getElementById("cover").style.animationDirection = "normal"
+    
+  } else if (event.target.id == "fullscreen") {
+    if (document.getElementById("hiddenFullscreenToggle").innerHTML.includes("False")) {
+      document.getElementById("hiddenFullscreenToggle").innerHTML = `True ${document.getElementById("canvas").style.top} ${document.getElementById("canvas").style.left}`;
+      document.getElementById("canvas").style.top = "0px";
+      document.getElementById("canvas").style.left = "0px";
+      document.getElementById("canvas").style.width = "920px";
+      document.getElementById("canvas").style.height = "540px";
+      document.getElementById("header").style.width = "920px";
+      text = "Getting bigger now"
+    } else if (event.target.id == "easterEggBSOD") {
+      text = "It died"
+    } else {
+      oldTop = document.getElementById("hiddenFullscreenToggle").innerHTML.split(" ")[1]
+      oldLeft = document.getElementById("hiddenFullscreenToggle").innerHTML.split(" ")[2]
+      document.getElementById("hiddenFullscreenToggle").innerHTML = "False 0 0";
+      document.getElementById("canvas").style.top = oldTop;
+      document.getElementById("canvas").style.left = oldLeft;
+      document.getElementById("canvas").style.width = "460px";
+      document.getElementById("canvas").style.height = "270px";
+      document.getElementById("header").style.width = "460px";
+      text = "Getting smaller now"
+    }
+  } else {
+    text = "Nothin to see here..."
+  }
+  document.getElementById("dev").innerHTML = text
+    
+});
+
+document.getElementById("cover").style.animationName = "fadeOut"
+document.getElementById("cover").style.animationDuration = "0.5s"
+document.getElementById("cover").style.animationTimingFunction = "ease-in-out"
+document.getElementById("cover").style.animationFillMode = "forwards" 
+document.getElementById("cover").style.animationDirection = "normal"
+
+function sleep(ms) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < ms);
+}
