@@ -119,8 +119,9 @@ function verifyGroups(rotations) {
     }
   }
 
-  // risky but surely u wont get that unlucky right??
-  return conflicts.filter((_, i) => i % 2 == 0)
+  // risky but surely u wont get that unlucky right?? yes okay i did get that unlucky
+  // return conflicts.filter((_, i) => i % 2 == 0)
+  return conflicts
 }
 
 function generateRotations() {
