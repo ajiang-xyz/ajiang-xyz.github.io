@@ -7,7 +7,7 @@ let firstLoad = false
 const routerPathes = {
   "index": "/pages/index/index.html",
   "parallax": "/pages/parallax/index.html",
-  "dupas": "/pages/unique_rotation_gen/index.html"
+  "dupas": "/pages/unique_rotation_generator/index.html"
 }
 
 if (Object.keys(routerPathes).includes(currentPage)) {initiateTransition(currentPage, routerPathes[currentPage])}
