@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Router</title>
+    <link rel="stylesheet" href="/pages/unique_rotation_generator/style.css">
+    <link rel="stylesheet" href="/transition-styles.css">
+</head>
+<body>
+    <div id="container">
+        <div data-type="transition__content-wrapper" class="transition__uniquerotationgen">
+            <div id="beepBoop">
+                <table>
+                    <tr>
+                        <th>Students in class:</th>
+                        <td><input type="text" id="studentsTyping" value="30"></td>
+                        <td><input type="range" id="studentsSliding" value="30" min="1" max="60" step="1"></td>
+                    </tr>
+                    <tr>
+                        <th>Maximum students per table:</th>
+                        <td><input type="text" id="tablesTyping" value="5"></td>
+                        <td><input type="range" id="tablesSliding" value="5" min="1" max="10" step="1"></td>
+                    </tr>
+                    <tr>
+                        <th>Total rotations:</th>
+                        <td><input type="text" id="rotationsTyping" value="4"></td>
+                        <td><input type="range" id="rotationsSliding" value="4" min="1" max="10" step="1"></td>
+                    </tr>
+                </table>
+                <button onclick="getGroups()" id="getGroups">Get Groups!</button>
+                <div id="rotations"></div>
+                <div id="conflicts"></div>
+            </div>
+        </div>
+        <div id="transition__cover"></div>
+    </div>
+</body>
+
+<script src="./solve.js"></script>
+<script src="./script.js"></script>
+<script src="/transition.js"></script>
+</html>
